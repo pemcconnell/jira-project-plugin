@@ -52,25 +52,6 @@
              <description>report.issuecreation.projectid.description</description>
              <type>filterprojectpicker</type>
          </property>
-         <property>
-             <key>startDate</key>
-             <name>report.issuecreation.startdate</name>
-             <description>report.issuecreation.startdate.description</description>
-             <type>date</type>
-         </property>
-         <property>
-             <key>endDate</key>
-             <name>report.issuecreation.enddate</name>
-             <description>report.issuecreation.enddate.description</description>
-             <type>date</type>
-         </property>
-         <property>
-             <key>interval</key>
-             <name>report.issuecreation.interval</name>
-             <description>report.issuecreation.interval.description</description>
-             <type>long</type>
-             <default>3</default>
-         </property>
     </properties>
   </report>
 </atlassian-plugin>

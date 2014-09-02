@@ -1,3 +1,25 @@
-#breakdown-report {
-    background:red;
+#breakdown-report table.results {
+    background: #efefef;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+    border-bottom: 3px solid #ccc;
+}
+
+#breakdown-report table.results thead tr {
+    background: #ccc;
+}
+#breakdown-report table.results tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+
+#breakdown-report table.results td, #breakdown-report table.results th {
+    border-collapse: collapse;
+    padding: 10px;
+}
+#breakdown-report .alert {
+    color: #f00;
+}
+#breakdown-report .alert.count_0 {
+    color: #ddd;
 }

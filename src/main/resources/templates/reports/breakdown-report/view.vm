@@ -1,15 +1,16 @@
 <div id="breakdown-report">
 <h3>
-    $i18n.getText('report.issuecreation.project'): $projectName | 
-    $i18n.getText('report.issuecreation.duration'): $outlookDate.formatDMY($startDate) - $outlookDate.formatDMY($endDate) |
-    $i18n.getText('report.issuecreation.interval'): $interval $i18n.getText('report.issuecreation.interval.days')
+    $i18n.getText('report.issuecreation.project'): $projectName
 </h3>
+<h5>$issueCount issues total</h5>
 <section>
-<h4>Component Breakdown</h4>
-<table>
+<h3>Component Breakdown</h3>
+<div class="alert count_$issuesWithoutComponents">
+$issuesWithoutComponents issues without components</div>
+<table class="results">
     <thead>
         <tr>
-            <th>Component</th>
+            <th width="160">Component</th>
             <th>Version 0.1</th>
             <th>Version 0.2</th>
         </tr>
@@ -30,4 +31,67 @@
     </tfoot>
 </table>
 </section>
+
+<section>
+<h3>Epic Breakdown</h3>
+<table class="results">
+    <thead>
+        <tr>
+            <th width="160">Component</th>
+            <th>Version 0.1</th>
+            <th>Version 0.2</th>
+        </tr>
+    </thead>
+    <tbody>
+        #foreach ($epic in $epics)
+            <tr>
+                <td>
+                $epic.getSummary()
+                </td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+        #end
+    </tbody>
+    <tfoot>
+        <tr>
+            <th><em>Totals</em></th>
+            <th>3</th>
+            <th>8</th>
+        </tr>
+    </tfoot>
+</table>
+</section>
+
+<section>
+<h3>Assignee Breakdown</h3>
+<table class="results">
+    <thead>
+        <tr>
+            <th width="160">User</th>
+            <th>Tasks</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        #foreach ($issue in $issues)
+            <tr>
+                <td>
+                $issue.getAssigneeId()
+                </td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+        #end
+    </tbody>
+    <tfoot>
+        <tr>
+            <th><em>Totals</em></th>
+            <th>3</th>
+            <th>8</th>
+        </tr>
+    </tfoot>
+</table>
+</section>
+
 </div>
