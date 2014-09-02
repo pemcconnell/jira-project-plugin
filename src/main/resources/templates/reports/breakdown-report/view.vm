@@ -1,0 +1,33 @@
+<div id="breakdown-report">
+<h3>
+    $i18n.getText('report.issuecreation.project'): $projectName | 
+    $i18n.getText('report.issuecreation.duration'): $outlookDate.formatDMY($startDate) - $outlookDate.formatDMY($endDate) |
+    $i18n.getText('report.issuecreation.interval'): $interval $i18n.getText('report.issuecreation.interval.days')
+</h3>
+<section>
+<h4>Component Breakdown</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Component</th>
+            <th>Version 0.1</th>
+            <th>Version 0.2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DevOps</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th><em>Totals</em></th>
+            <th>3</th>
+            <th>8</th>
+        </tr>
+    </tfoot>
+</table>
+</section>
+</div>

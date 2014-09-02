@@ -1,35 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
-    <plugin-info>
-        <description>${project.description}</description>
-        <version>${project.version}</version>
-        <vendor name="${project.organization.name}" url="${project.organization.url}" />
-        <param name="plugin-icon">images/pluginIcon.png</param>
-        <param name="plugin-logo">images/pluginLogo.png</param>
-    </plugin-info>
-    <resource type="i18n" name="i18n" location="rehabstudioprojecttemplate" />
-    <web-resource key="rehabstudioprojecttemplate-resources" name="rehabstudioprojecttemplate Web Resources">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
-        <transformation extension="soy">
-            <transformer key="soyTransformer" />
-        </transformation>
-        <resource type="download" name="rehabstudioProjectTemplate.soy.js" location="/soy/rehabstudioProjectTemplate.soy" />
-        <resource type="download" name="images/" location="/images">
-            <param name="content-type" value="image/png; charset=binary" />
-        </resource>
-        <context>atl.general</context>
-        <context>atl.admin</context>
-    </web-resource>
-    <project-blueprint key="rehabstudioprojecttemplate" weight="90">
-        <label key="rehab.project.template.name" />
-        <description key="rehab.project.template.description" />
-        <longDescription key="rehab.project.template.description.long" />
-        <infoPage soy-template="JIRA.Templates.ProjectTemplates.Rehabstudio.renderProjectTemplateExplanation" />
-        <icon location="images/rehab-icon.png" />
-        <backgroundIcon location="images/rehabproject-background.png" />
-        <add-project>
-            <hook class="com.rehabstudio.plugins.AddRehabProjectHook"/>
-            <descriptor file="/config/rehabstudioprojecttemplate-config.json" />
-        </add-project>
-    </project-blueprint>
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+  <resource type="i18n" name="i18n" location="rehabstudioprojecttemplate"/>
+  <web-resource key="rehabstudioprojecttemplate-resources" name="rehabstudioprojecttemplate Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <transformation extension="soy">
+      <transformer key="soyTransformer"/>
+    </transformation>
+    <resource type="download" name="rehabstudioProjectTemplate.soy.js" location="/soy/rehabstudioProjectTemplate.soy"/>
+    <resource type="download" name="images/" location="/images">
+      <param name="content-type" value="image/png; charset=binary"/>
+    </resource>
+    <context>atl.general</context>
+    <context>atl.admin</context>
+  </web-resource>
+  <web-resource key="BreakdownReport-resources" name="BreakdownReport Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <resource type="download" name="breakdown-report.css" location="/css/breakdown-report.css"/>
+    <resource type="download" name="breakdown-report.js" location="/js/breakdown-report.js"/>
+    <context>atl.general</context>=
+  </web-resource>
+  <project-blueprint key="rehabstudioprojecttemplate" weight="90">
+    <label key="rehab.project.template.name"/>
+    <description key="rehab.project.template.description"/>
+    <longDescription key="rehab.project.template.description.long"/>
+    <infoPage soy-template="JIRA.Templates.ProjectTemplates.Rehabstudio.renderProjectTemplateExplanation"/>
+    <icon location="images/rehab-icon.png"/>
+    <backgroundIcon location="images/rehabproject-background.png"/>
+    <add-project>
+      <hook class="com.rehabstudio.plugins.AddRehabProjectHook"/>
+      <descriptor file="/config/rehabstudioprojecttemplate-config.json"/>
+    </add-project>
+  </project-blueprint>
+  <report name="Breakdown Report" i18n-name-key="breakdown-report.name" key="breakdown-report" class="com.rehabstudio.plugins.BreakdownReport">
+    <description key="breakdown-report.description">The Breakdown Report Plugin</description>
+    <resource name="view" type="velocity" location="/templates/reports/breakdown-report/view.vm"/>
+    <resource name="i18n" type="i18n" location="BreakdownReport"/>
+    <label key="breakdown-report.label"></label>
+    <!-- the properties of this report which the user must select before running it -->
+    <properties>
+         <property>
+             <key>projectid</key>
+             <name>report.issuecreation.projectid.name</name>
+             <description>report.issuecreation.projectid.description</description>
+             <type>filterprojectpicker</type>
+         </property>
+         <property>
+             <key>startDate</key>
+             <name>report.issuecreation.startdate</name>
+             <description>report.issuecreation.startdate.description</description>
+             <type>date</type>
+         </property>
+         <property>
+             <key>endDate</key>
+             <name>report.issuecreation.enddate</name>
+             <description>report.issuecreation.enddate.description</description>
+             <type>date</type>
+         </property>
+         <property>
+             <key>interval</key>
+             <name>report.issuecreation.interval</name>
+             <description>report.issuecreation.interval.description</description>
+             <type>long</type>
+             <default>3</default>
+         </property>
+    </properties>
+  </report>
 </atlassian-plugin>
