@@ -5,15 +5,10 @@ import com.atlassian.jira.blueprint.api.ConfigureData;
 import com.atlassian.jira.blueprint.api.ConfigureResponse;
 import com.atlassian.jira.blueprint.api.ValidateData;
 import com.atlassian.jira.blueprint.api.ValidateResponse;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import java.io.*;
-import java.util.*;
 
 public class AddRehabProjectHook implements AddProjectHook
 {
-
-    private static final Logger log = LogManager.getLogger("atlassian.plugin");
 
     @Override
     public ValidateResponse validate (final ValidateData validateData)
